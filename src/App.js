@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this.qrcode();
+    this.qrcode();
     this.upload();
   }
   upload(){
@@ -52,7 +52,9 @@ class App extends Component {
   qrcode() {
     const location = window.location.href;
     QRcode.toDataURL(location).then((url) => {
-      console.log(url);
+      this.setState({
+        url: url
+      })
     })
   }
   // 生成海报
@@ -67,15 +69,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="face">
-          <img src="#" ref="faceImg" className='faceImg'/>
-          <input 
-            type="file" 
-            accept="image/*"
-            id="face-input" />
-        </div>
-        <div ref='canvasRef' className='canvasRef'>
-          <img src={this.state.url} alt='图片'/>
+        <div ref='canvasRef'>
+          <div className="face">
+            <img src="#" ref="faceImg" className='faceImg'/>
+            <input 
+              type="file" 
+              accept="image/*"
+              id="face-input" />
+          </div>
+          <div className='canvasRef'>
+            <img src={this.state.url} alt='图片'/>
+          </div>
         </div>
         <button onClick={()=>{this.creatImg()}}>生成图片</button>
         { this.state._url && 

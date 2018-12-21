@@ -38,6 +38,7 @@
   position: absolute;
   left: 30%;
   top: 30%;
+  left: 0;
 }
 .face {
   width: 200px;
