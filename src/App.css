@@ -40,6 +40,9 @@
   top: 30%;
   left: 0;
 }
+img {
+  margin: auto;
+}
 .face {
   width: 200px;
   min-height: 120px;
